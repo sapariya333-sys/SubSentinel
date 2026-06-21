@@ -1,0 +1,24 @@
+# SubSentinel API Keys Configuration
+# Copy to api-keys.yaml and fill in your keys
+# Usage: python main.py -d example.com --api-keys api-keys.yaml
+
+# ── Free keys (register once, use forever) ─────────────────
+virustotal: ""        # https://virustotal.com  (free tier: 500 req/day)
+shodan: ""            # https://shodan.io       (free tier: basic search)
+securitytrails: ""    # https://securitytrails.com (free: 50 req/month)
+chaos: ""             # https://chaos.projectdiscovery.io (invite only)
+fullhunt: ""          # https://fullhunt.io     (free tier available)
+bevigil: ""           # https://bevigil.com     (free tier available)
+whoisxml: ""          # https://whoisxmlapi.com (free: 500 req/month)
+netlas: ""            # https://netlas.io       (free tier available)
+leakix: ""            # https://leakix.net      (free tier available)
+
+# ── Paid keys ─────────────────────────────────────────────
+censys_id: ""         # https://censys.io       (paid)
+censys_secret: ""
+binaryedge: ""        # https://binaryedge.io   (paid)
+zoomeye: ""           # https://zoomeye.hk      (paid)
+
+# ── Facebook CT logs ──────────────────────────────────────
+facebook_app_id: ""       # https://developers.facebook.com
+facebook_app_secret: ""

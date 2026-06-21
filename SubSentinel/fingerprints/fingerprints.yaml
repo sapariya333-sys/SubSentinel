@@ -1,0 +1,391 @@
+# SubSentinel Fingerprint Database
+# Format: service name with detection patterns
+# Last updated: 2025-01
+# Sources: community research, Can I Take Over XYZ, hackerone reports
+
+fingerprints:
+  - service: "GitHub Pages"
+    cname_patterns:
+      - "github.io"
+      - "github.com"
+    body_fingerprints:
+      - "There isn't a GitHub Pages site here."
+      - "For root URLs (like http://example.com/) you must provide an index.html file"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Register the GitHub username/org and create repo with gh-pages branch"
+    docs: "https://docs.github.com/en/pages/getting-started-with-github-pages"
+    confidence_boost: 20
+
+  - service: "Heroku"
+    cname_patterns:
+      - ".herokudns.com"
+      - ".herokuapp.com"
+    body_fingerprints:
+      - "No such app"
+      - "herokucdn.com/error-pages/no-such-app.html"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Register a Heroku app with the matching subdomain name"
+    docs: "https://devcenter.heroku.com/articles/custom-domains"
+    confidence_boost: 25
+
+  - service: "AWS S3"
+    cname_patterns:
+      - ".s3.amazonaws.com"
+      - ".s3-website"
+      - "s3-website-"
+      - ".s3.us-east"
+      - ".s3.eu-west"
+      - ".s3.ap-"
+    body_fingerprints:
+      - "NoSuchBucket"
+      - "The specified bucket does not exist"
+      - "<Code>NoSuchBucket</Code>"
+    status_codes: [403, 404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create an S3 bucket with the same name as the subdomain"
+    docs: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html"
+    confidence_boost: 30
+
+  - service: "Azure"
+    cname_patterns:
+      - ".azurewebsites.net"
+      - ".blob.core.windows.net"
+      - ".cloudapp.azure.com"
+      - ".cloudapp.net"
+      - ".trafficmanager.net"
+      - ".azureedge.net"
+      - ".azurecontainer.io"
+      - ".azurefd.net"
+    body_fingerprints:
+      - "404 Web Site not found"
+      - "was not found on this server"
+      - "Microsoft Azure Web App"
+      - "sideload your app"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create an Azure App Service or Blob storage with the matching name"
+    docs: "https://docs.microsoft.com/en-us/azure/app-service"
+    confidence_boost: 25
+
+  - service: "Netlify"
+    cname_patterns:
+      - ".netlify.app"
+      - ".netlify.com"
+      - "netlify.com"
+    body_fingerprints:
+      - "Not found - Request ID"
+      - "netlify"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a Netlify site and add the custom domain"
+    docs: "https://docs.netlify.com/domains-https/custom-domains"
+    confidence_boost: 20
+
+  - service: "Vercel"
+    cname_patterns:
+      - ".vercel.app"
+      - ".vercel.com"
+      - ".now.sh"
+    body_fingerprints:
+      - "The deployment you are trying to access does not exist"
+      - "This Deployment doesn't exist"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Deploy a Vercel project and add the domain"
+    docs: "https://vercel.com/docs/custom-domains"
+    confidence_boost: 20
+
+  - service: "Fastly"
+    cname_patterns:
+      - ".fastly.net"
+      - ".fastlylb.net"
+    body_fingerprints:
+      - "Fastly error: unknown domain"
+      - "Please check that this domain has been added to a Fastly service"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create a Fastly service and add the domain"
+    docs: "https://developer.fastly.com/reference/api"
+    confidence_boost: 25
+
+  - service: "Shopify"
+    cname_patterns:
+      - ".myshopify.com"
+      - "shops.myshopify.com"
+    body_fingerprints:
+      - "Sorry, this shop is currently unavailable."
+      - "Only one step left!"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Register a Shopify store with matching domain"
+    docs: "https://help.shopify.com/en/manual/domains"
+    confidence_boost: 20
+
+  - service: "Zendesk"
+    cname_patterns:
+      - ".zendesk.com"
+    body_fingerprints:
+      - "Help Center Closed"
+      - "We couldn't find the page you're looking for"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create a Zendesk account with the matching subdomain"
+    docs: "https://support.zendesk.com/hc/en-us/articles/203664356"
+    confidence_boost: 20
+
+  - service: "Ghost"
+    cname_patterns:
+      - ".ghost.io"
+    body_fingerprints:
+      - "The thing you were looking for is no longer here, or never was"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a Ghost publication with the matching subdomain"
+    docs: "https://ghost.org/docs"
+    confidence_boost: 20
+
+  - service: "Pantheon"
+    cname_patterns:
+      - ".pantheonsite.io"
+      - ".pantheon.io"
+    body_fingerprints:
+      - "404 error unknown site!"
+      - "The gods are wise, but do not know of the site"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create a Pantheon site with the matching domain"
+    docs: "https://pantheon.io/docs"
+    confidence_boost: 20
+
+  - service: "Render"
+    cname_patterns:
+      - ".onrender.com"
+    body_fingerprints:
+      - "No servers are available to handle this request."
+      - "Service not found"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a Render service and add the custom domain"
+    docs: "https://render.com/docs/custom-domains"
+    confidence_boost: 20
+
+  - service: "Railway"
+    cname_patterns:
+      - ".railway.app"
+      - ".up.railway.app"
+    body_fingerprints:
+      - "Application not found"
+      - "We couldn't find your app"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Deploy a Railway application and add the domain"
+    docs: "https://docs.railway.app/projects/custom-domains"
+    confidence_boost: 20
+
+  - service: "Fly.io"
+    cname_patterns:
+      - ".fly.dev"
+      - ".fly.io"
+    body_fingerprints:
+      - "404 Not Found"
+      - "fly.io"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Deploy a Fly.io app and bind the domain"
+    docs: "https://fly.io/docs/app-guides/custom-domains-with-fly"
+    confidence_boost: 20
+
+  - service: "Cloudflare Pages"
+    cname_patterns:
+      - ".pages.dev"
+    body_fingerprints:
+      - "Does not exist"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a Cloudflare Pages project and add the domain"
+    docs: "https://developers.cloudflare.com/pages/platform/custom-domains"
+    confidence_boost: 20
+
+  - service: "Surge.sh"
+    cname_patterns:
+      - ".surge.sh"
+    body_fingerprints:
+      - "project not found"
+      - "doesn't appear to be a Surge project"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Run surge.sh and publish to this subdomain"
+    docs: "https://surge.sh/help/adding-a-custom-domain"
+    confidence_boost: 20
+
+  - service: "Firebase"
+    cname_patterns:
+      - ".firebaseapp.com"
+      - ".web.app"
+    body_fingerprints:
+      - "Site Not Found"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create a Firebase project and deploy to this domain"
+    docs: "https://firebase.google.com/docs/hosting/custom-domain"
+    confidence_boost: 20
+
+  - service: "HubSpot"
+    cname_patterns:
+      - ".hs-sites.com"
+      - ".hubspot.com"
+      - ".hubspotpagebuilder.com"
+    body_fingerprints:
+      - "Domain is not configured for this HubSpot account"
+      - "does not exist in our system"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Connect this domain to a HubSpot portal"
+    docs: "https://knowledge.hubspot.com/cos-general/how-to-connect-a-subdomain-to-hubspot"
+    confidence_boost: 20
+
+  - service: "Tumblr"
+    cname_patterns:
+      - ".tumblr.com"
+    body_fingerprints:
+      - "Whatever you were looking for doesn't currently exist at this address"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a Tumblr blog and set this custom domain"
+    docs: "https://help.tumblr.com/hc/en-us/articles/231256048"
+    confidence_boost: 15
+
+  - service: "Wordpress.com"
+    cname_patterns:
+      - ".wordpress.com"
+    body_fingerprints:
+      - "Do you want to register"
+      - "doesn't exist"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a WordPress.com blog with this domain"
+    docs: "https://wordpress.com/support/domains"
+    confidence_boost: 15
+
+  - service: "Intercom"
+    cname_patterns:
+      - ".intercom.help"
+      - ".intercom.io"
+    body_fingerprints:
+      - "This page doesn't exist"
+      - "Uh oh. That page doesn't exist."
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create an Intercom Help Center and add this custom domain"
+    docs: "https://www.intercom.com/help/en/articles/178-set-up-your-custom-domain"
+    confidence_boost: 20
+
+  - service: "Statuspage"
+    cname_patterns:
+      - ".statuspage.io"
+    body_fingerprints:
+      - "Status Page pushed the status page"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create an Atlassian Statuspage and point this domain to it"
+    docs: "https://support.atlassian.com/statuspage/docs"
+    confidence_boost: 20
+
+  - service: "Kinsta"
+    cname_patterns:
+      - ".kinsta.cloud"
+    body_fingerprints:
+      - "No Site For Domain"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Point this domain to an active Kinsta site"
+    docs: "https://kinsta.com/knowledgebase/add-domain"
+    confidence_boost: 20
+
+  - service: "Wix"
+    cname_patterns:
+      - ".wixdns.net"
+      - ".wix.com"
+    body_fingerprints:
+      - "Looks Like This Domain Isn't Connected To A Website Yet"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Connect this domain to a Wix website"
+    docs: "https://support.wix.com/en/article/connecting-a-domain-to-wix"
+    confidence_boost: 15
+
+  - service: "Squarespace"
+    cname_patterns:
+      - ".squarespace.com"
+      - ".sqsp.net"
+    body_fingerprints:
+      - "No Such Account"
+      - "squarespace.com"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Create a Squarespace site and connect this domain"
+    docs: "https://support.squarespace.com/hc/en-us/articles/205812378"
+    confidence_boost: 15
+
+  - service: "ReadTheDocs"
+    cname_patterns:
+      - ".readthedocs.io"
+    body_fingerprints:
+      - "The URL you have tried to reach does not exist"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a ReadTheDocs project with this custom domain"
+    docs: "https://docs.readthedocs.io/en/stable/custom_domains.html"
+    confidence_boost: 20
+
+  - service: "Agile CRM"
+    cname_patterns:
+      - ".agilecrm.com"
+    body_fingerprints:
+      - "Sorry, this page is no longer available"
+    status_codes: [404]
+    claimable: true
+    difficulty: "medium"
+    notes: "Domain is pointing to Agile CRM but no account found"
+    docs: "https://www.agilecrm.com"
+    confidence_boost: 15
+
+  - service: "Cargo Collective"
+    cname_patterns:
+      - ".cargocollective.com"
+    body_fingerprints:
+      - "404 Not Found"
+    status_codes: [404]
+    claimable: true
+    difficulty: "easy"
+    notes: "Create a Cargo Collective portfolio and add this domain"
+    docs: "https://support.cargo.site"
+    confidence_boost: 15
