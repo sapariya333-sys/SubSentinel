@@ -54,7 +54,7 @@ SubSentinel/
 
 ```bash
 # Clone / download SubSentinel
-git clone https://github.com/yourrepo/subsentinel
+https://github.com/sapariya333-sys/SubSentinel
 cd SubSentinel
 
 # Create virtual environment (recommended)
