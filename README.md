@@ -1,6 +1,6 @@
 ![imagea alt](https://github.com/sapariya333-sys/SubSentinel/blob/74de71f68a502714d849239be5e3a31dfee456d7/file_000000000324720c9d43d0445ff236bf.png)
 
-# SubSentinel v2.0
+# SubSentinel v4.0
 ### Professional Subdomain Takeover Detection Framework
 
 > ⚠️ **LEGAL WARNING**: This tool is for **authorized security testing ONLY**.  
